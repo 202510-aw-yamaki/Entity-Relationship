@@ -45,7 +45,11 @@ button[disabled]{opacity:.55;cursor:not-allowed}
 .start-sample-card p{margin:0 0 12px;font-size:13px;line-height:1.7;color:var(--muted)}
 body.start-screen-open{overflow:hidden}
 .panel{position:relative;height:100vh;overflow:auto}
-.help-section{position:sticky;bottom:18px;z-index:2;background:linear-gradient(180deg,rgba(255,253,249,.94),rgba(255,253,249,.99))}
+.help-section{padding:0;overflow:hidden}
+.help-section summary{list-style:none;cursor:pointer;padding:14px 16px;font-size:18px;font-weight:700}
+.help-section summary::-webkit-details-marker{display:none}
+.help-section[open] summary{border-bottom:1px solid #eadfce}
+.help-section-body{padding:14px 16px}
 .toolbar-main{display:grid;gap:8px;flex:1 1 420px;min-width:0}
 .toolbar-side{display:grid;gap:10px;justify-items:end;flex:0 1 420px;min-width:min(100%,340px)}
 .toolbar-actions{display:flex;gap:8px;flex-wrap:wrap}
@@ -110,7 +114,12 @@ body.start-screen-open{overflow:hidden}
     <input id="load-input" class="hidden" type="file" accept=".json,application/json">
     <p id="io-note" class="note"></p>
   </div>
-  <div class="section help-section"><h2 id="help-title"></h2><ul id="help-list" class="help-list"></ul></div>
+  <details class="section help-section">
+    <summary id="help-summary"></summary>
+    <div class="help-section-body">
+      <ul id="help-list" class="help-list"></ul>
+    </div>
+  </details>
 </aside>
 <main class="canvas-panel">
   <div class="canvas-toolbar">
@@ -161,10 +170,11 @@ el.leftPanel=document.getElementById("left-panel");
 el.rightPanel=document.getElementById("right-panel");
 el.toggleLeftPanelButton=document.getElementById("toggle-left-panel-button");
 el.toggleRightPanelButton=document.getElementById("toggle-right-panel-button");
+el.helpSummary=document.getElementById("help-summary");
 el.shortcutSummary=document.getElementById("shortcut-summary");
 el.shortcutList=document.getElementById("shortcut-list");
 T.downloadAi="AI向け出力";T.downloadHuman="human向け出力";T.downloadConsultJson="AI相談JSON出力";T.defaultProject="project";T.cancelConnect="箱接続に戻る";T.undo="直前の操作を戻す";T.redo="戻した操作をやり直す";T.zoomBadge="表示";T.guide="箱や線を選ぶと右側で内容を確認・編集できます。Ctrl / Cmd + クリックで線をつなぎ始めることもできます。";T.loadSuccess="読込が完了しました。箱、線、STEPの状態を確認してください。";T.loadFailure="JSONの読込に失敗しました。内容が壊れていないか確認してください。";T.loadEmpty="読込対象の中身が空です。";T.loadInvalidRoot="読込内容が不正です。箱と線を含むJSONを選んでください。";T.groupDrawGuide="いまは親箱を作る状態です。空いている場所をドラッグすると親箱を作れます。作成後は通常の箱作成に戻ります。";T.loadConsultJson="このJSONはAI相談用の別形式です。「JSON読込」ではなく、AIへの相談に使ってください。図を読み込むときは、version / projectName / currentStep / nodes / edges を持つ保存用JSONを選んでください。";T.startTitle="最初の始め方を選んでください";T.startNote="いきなりサンプルを出さず、あなたの進め方に合わせて図の土台を用意します。";T.startClose="今の図に戻る";T.startEmptyTitle="空の状態から始める";T.startEmptyDetail="箱や線がない状態で開き、一から整理を始めます。";T.startLoadTitle="JSON読込から始める";T.startLoadDetail="途中保存したJSONを選んで、その状態から再開します。";T.startSamplesTitle="サンプルから始める";T.startSampleAction="このサンプルで始める";T.restartConfirmPrefix="今の内容をいったん外して、";T.restartConfirmSuffix="で始めます。よろしいですか。";
-T.toggleLeftOpen="左パネルを開く";T.toggleLeftClose="左パネルをたたむ";T.toggleRightOpen="右パネルを開く";T.toggleRightClose="右パネルをたたむ";T.shortcutSummary="ショートカット";T.helpItems=["空いている図エリアをドラッグすると、通常の箱を作れます。","「親箱を追加」を押した後に空いている場所をドラッグすると、親箱を作れます。","Ctrl / Cmd を押しながら箱や箱内要件をクリックすると、そのまま線をつなぎ始められます。","通常の箱を親箱の中へ動かして離すと、その親箱の子要素としてまとまります。","箱や線を選んで Delete または Backspace を押すと削除できます。文字入力中は図の削除は起きません。","選んだ箱の右下に出るハンドルをドラッグすると、箱の大きさを変えられます。","Ctrl / Cmd + S で保存、Ctrl / Cmd + O で読込、Ctrl / Cmd + Z で戻す、Ctrl / Cmd + Shift + Z または Ctrl / Cmd + Y でやり直せます。","Ctrl / Cmd + 1 / 2 / 3 で STEP を切り替えられます。","Ctrl / Cmd + マウスホイール、Ctrl / Cmd + + / - / 0 で表示倍率を調整できます。","左右パネルはツールバーのボタンでたたんだり開いたりできます。"];
+T.toggleLeftOpen="左パネルを開く";T.toggleLeftClose="左パネルをたたむ";T.toggleRightOpen="右パネルを開く";T.toggleRightClose="右パネルをたたむ";T.shortcutSummary="ショートカットキーを確認";T.helpItems=["空いている図エリアをドラッグすると、通常の箱を作れます。","「親箱を追加」を押した後に空いている場所をドラッグすると、親箱を作れます。","通常の箱を親箱の中へ動かして離すと、その親箱の子要素としてまとまります。","箱や線を選んで Delete または Backspace を押すと削除できます。文字入力中は図の削除は起きません。","選んだ箱の右下に出るハンドルをドラッグすると、箱の大きさを変えられます。"];
 T.stepNote="STEP1: 要件の大枠確認<br>STEP2: 保存先・参照先の確認<br>STEP3: 顧客に説明できる粒度の確認";
 T.ioNote="保存では現在のSTEP、箱、線、箱内要件、親箱の関係まで残せます。AIにこのHTML用の保存JSONひな型を作ってもらい、「JSON読込」で土台を出すこともできます。「AI相談JSON出力」はAIに相談するための別出力で、JSON読込の対象ではありません。";
 STEP_META.STEP1.focus="主な箱と線を置いて、大枠の抜け漏れを減らします。";
@@ -199,7 +209,7 @@ setBtn(el.downloadAiButton,T.downloadAi);
 setBtn(el.downloadHumanButton,T.downloadHuman);
 setBtn(el.downloadConsultJsonButton,T.downloadConsultJson);
 set("io-note",T.ioNote);
-set("help-title",T.help);
+if(el.helpSummary)el.helpSummary.textContent=T.help;
 const ul=document.getElementById("help-list");
 ul.innerHTML="";
 T.helpItems.forEach(v=>{
