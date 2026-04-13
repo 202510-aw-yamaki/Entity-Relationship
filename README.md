@@ -245,13 +245,17 @@ AIに「何が足りないか」「何を確認すべきか」を相談しやす
 
 ### docs
 - docs/SPEC.md  
-  全体仕様の整理
+-  ユーザー要望の仕様固定書
+- docs/IMPLEMENTATION_RULES.md  
+  実装時の共通ルール
+- docs/COMPLETED_REQUIREMENTS.md  
+  達成済みの要件一覧
+- docs/UNMET_REQUIREMENTS.md  
+  未達の要件一覧
 - docs/VALIDATION_RULES.md  
-  STEP1 / STEP2 / STEP3 の判定観点
+  STEP1 / STEP2 / STEP3 の判定条件と文言
 - docs/JSON_SCHEMA.md  
-  保存 / 読込するJSONの考え方と構造
-- docs/PHASE_SCOPE.md  
-  段階実装の範囲整理
+  保存 / 読込する JSON の現行仕様
 - docs/MANUAL_TEST.md  
   既存仕様を壊していないか確認するための手動確認手順
 
