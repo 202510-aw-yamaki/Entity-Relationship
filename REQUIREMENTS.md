@@ -54,6 +54,19 @@
 - `docs/COMPLETED_REQUIREMENTS.md` の「`userLevel` を保存用 JSON に保持し、再読込時に復元できる」
 - `docs/COMPLETED_REQUIREMENTS.md` の「AI向け Markdown と AI相談JSON に `userLevel` と説明粒度の案内を含められる」
 
+2026-04-17 追記:
+`canvas-toolbar` の高さを抑えるため、`userLevel` 表示は開始画面・ツールバーともに短い見出しを基本とし、表示上は `はじめて` `少し` `ある程度` `エンジニア` を使う方針で承認済みです。
+`toolbar-side` では `connect-guide` の下に4ボタンを1行で置き、現在レベルのバッジは `status` 内へ移す構成を想定します。
+達成管理先は次の項目です。
+- `docs/COMPLETED_REQUIREMENTS.md` の「`userLevel` の表示文言を短くし、開始画面と `canvas-toolbar` で同じ4段階ラベルを見せられる」
+- `docs/COMPLETED_REQUIREMENTS.md` の「`canvas-toolbar` の `userLevel` 操作を4ボタン1行にし、現在レベルのバッジを `status` 内で見られる」
+
+2026-04-17 追記:
+開始画面では `userLevel` の選択肢ごとの詳細文言を残してよく、`canvas-toolbar` 側だけ短いラベル表示を維持する方針で承認済みです。
+開始画面では `はじめて / 聞いたことはある程度` のように見出しと補足文を表示し、`canvas-toolbar` では `はじめて / 少し / ある程度 / エンジニア` の短い4ボタン表示を使います。
+達成管理先は次の項目です。
+- `docs/COMPLETED_REQUIREMENTS.md` の「開始画面では `userLevel` の詳細文言を表示し、`canvas-toolbar` では短いラベル表示を維持できる」
+
 **細かい要望**
 - 現在はhtmlを開くと左のサイドパネルが閉じているが開いていて欲しい。
 - AIに出力するものに対して、ユーザーがどのAIに張ればいいか迷わないように「あなたの使用しているAI」というのを把握できる構造にしてほしい

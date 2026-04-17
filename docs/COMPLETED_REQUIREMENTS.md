@@ -31,6 +31,9 @@
 - PC 幅で `canvas-toolbar` の状態バッジを 1 行に並べられる
 - PC 幅で `STEP` ガイドと接続ガイドを左右に分けて配置できる
 - `canvas-toolbar` の `toolbar-side` 内で `connect-guide` の下に現在の `userLevel` を表示し、開始後も変更できる
+- `userLevel` の表示文言を短くし、開始画面と `canvas-toolbar` で `はじめて` `少し` `ある程度` `エンジニア` の4段階ラベルを見せられる
+- `canvas-toolbar` の `userLevel` 操作を4ボタン1行にし、現在レベルのバッジを `status` 内で見られる
+- 開始画面では `userLevel` の詳細文言を表示し、`canvas-toolbar` では短いラベル表示を維持できる
 - 左カラム上部の使い方をアコーディオンで開閉できる
 - `使い方` に開閉できることが分かる印を表示できる
 - 左ツールバーを閉じているときも、使い方、ショートカット、Undo / Redo、保存、読込、始め方の導線を残せる
@@ -122,3 +125,7 @@
   - 図エリアの作業領域拡張と、`Ctrl / Cmd + Shift + 1 / 2 / 3` による STEP 判定ショートカットを達成済みへ追加した。
 - 2026-04-17
   - `userLevel` の開始画面選択、保存JSON保持、`connect-guide` 下の表示、AI向け Markdown / AI相談JSON 反映を達成済みへ追加した。
+- 2026-04-17
+  - `userLevel` の表示文言を短縮し、`canvas-toolbar` の `userLevel` 操作を4ボタン1行へ圧縮、現在レベルのバッジを `status` 側へ移した。
+- 2026-04-17
+  - 開始画面の `userLevel` は詳細文言つき表示へ戻し、`canvas-toolbar` 側だけ短いラベル表示を維持する形に調整した。
