@@ -45,6 +45,15 @@
 - `docs/UNMET_REQUIREMENTS.md` の「AI向け出力に `userLevel` と説明粒度の案内文を反映する」
 - `docs/UNMET_REQUIREMENTS.md` の「AI相談JSONに `userLevel` と説明粒度の案内文を反映する」
 
+2026-04-17 追記:
+上記 `userLevel` 要望のうち、開始画面選択 / 保存JSON保持 / `canvas-toolbar` 表示 / AI向け出力 / AI相談JSON 反映は実装済みです。
+達成管理先は次の項目です。
+- `docs/COMPLETED_REQUIREMENTS.md` の「開始画面に `userLevel` の4段階選択UIを表示できる」
+- `docs/COMPLETED_REQUIREMENTS.md` の「開始画面で `userLevel` を選んでから `空の状態から始める` `サンプルから始める` `AIとの対話を箱と線で見える化しながら土台を作る` を使える」
+- `docs/COMPLETED_REQUIREMENTS.md` の「`canvas-toolbar` の `toolbar-side` 内で `connect-guide` の下に現在の `userLevel` を表示し、開始後も変更できる」
+- `docs/COMPLETED_REQUIREMENTS.md` の「`userLevel` を保存用 JSON に保持し、再読込時に復元できる」
+- `docs/COMPLETED_REQUIREMENTS.md` の「AI向け Markdown と AI相談JSON に `userLevel` と説明粒度の案内を含められる」
+
 **細かい要望**
 - 現在はhtmlを開くと左のサイドパネルが閉じているが開いていて欲しい。
 - AIに出力するものに対して、ユーザーがどのAIに張ればいいか迷わないように「あなたの使用しているAI」というのを把握できる構造にしてほしい

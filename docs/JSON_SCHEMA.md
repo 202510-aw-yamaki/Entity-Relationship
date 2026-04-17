@@ -13,6 +13,7 @@
 - `version`
 - `projectName`
 - `currentStep`
+- `userLevel`
 - `nodes`
 - `edges`
 
@@ -23,6 +24,7 @@
   "version": 1,
   "projectName": "sample",
   "currentStep": "STEP1",
+  "userLevel": "はじめて",
   "nodes": [],
   "edges": []
 }
@@ -37,6 +39,7 @@
 | `version` | number | 必須 | 現行は `1` |
 | `projectName` | string | 必須 | プロジェクト名 |
 | `currentStep` | string | 必須 | `STEP1` / `STEP2` / `STEP3` |
+| `userLevel` | string | 必須 | `はじめて` / `少し知っている` / `ある程度わかる` / `エンジニア寄り` |
 | `nodes` | array | 必須 | 箱一覧 |
 | `edges` | array | 必須 | 線一覧 |
 
@@ -140,6 +143,12 @@
 - `STEP2`
 - `STEP3`
 
+### `userLevel`
+- `はじめて`
+- `少し知っている`
+- `ある程度わかる`
+- `エンジニア寄り`
+
 ### `category`
 - `顧客要望`
 - `画面表示`
@@ -161,7 +170,7 @@
 
 ## 保存時の仕様
 - 保存ファイル名は `<project>.json`
-- 保存内容は `version` `projectName` `currentStep` `nodes` `edges` のみ
+- 保存内容は `version` `projectName` `currentStep` `userLevel` `nodes` `edges`
 - 保存用 JSON には STEP 判定結果、表示倍率、Undo 履歴、AI相談用情報を含めない
 
 ---
@@ -174,6 +183,7 @@
 - 存在しない箱や箱内要件を参照する線は読込時に除外する
 - 不正な `relationType` は `表示` に補正する
 - 不正な `arrowStart` / `arrowEnd` は `none` に補正する
+- `userLevel` が無い、または不正な場合は `はじめて` を補完する
 - 箱や箱内要件の ID が不足している場合は、読込時に補完する
 
 ---
