@@ -242,22 +242,24 @@ AIに「何が足りないか」「何を確認すべきか」を相談しやす
   このプロジェクトの概要、使い方、ファイル説明です。
 - AGENTS.md  
   このリポジトリで作業するときの厳守ルールです。
+- REQUIREMENTS.md  
+  ユーザー要望の原文と要望メモです。承認前の相談や整理の起点として使います。
 
 ### docs
 - docs/SPEC.md  
--  ユーザー要望の仕様固定書
+  ユーザー承認後に固定した仕様書。既存仕様の変更は元記述の下へ日付付きで追記して管理します。
 - docs/IMPLEMENTATION_RULES.md  
   実装時の共通ルール
 - docs/COMPLETED_REQUIREMENTS.md  
   達成済みの要件一覧
 - docs/UNMET_REQUIREMENTS.md  
-  未達の要件一覧
+  承認済みかつ未実装の要件一覧
 - docs/VALIDATION_RULES.md  
   STEP1 / STEP2 / STEP3 の判定条件と文言
 - docs/JSON_SCHEMA.md  
   保存 / 読込する JSON の現行仕様
-- docs/MANUAL_TEST.md  
-  既存仕様を壊していないか確認するための手動確認手順
+
+手動確認が必要な項目は、固定 Markdown ではなくチャット返信で案内します。
 
 ---
 
