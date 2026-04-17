@@ -34,6 +34,17 @@
 この要望のうち `userLevel` フィールド追加は、開始画面での4段階選択、保存JSONへの保持、AI向け出力 / AI相談JSONへの反映を固定仕様として扱う前提で承認済みです。
 未達管理先は `docs/UNMET_REQUIREMENTS.md` の「userLevel を追加し、開始画面選択・保存JSON保持・AI向け出力反映を行う」項目です。
 
+2026-04-17 追記:
+今回の整理では、開始画面で `userLevel` を必ず選ぶ前提とし、通常操作では未選択を作らない方針で承認済みです。
+旧JSONや想定外データで `userLevel` が無い場合のみ、フォールバック値は `はじめて` を採用します。
+開始後は `canvas-toolbar` の `toolbar-side` 内で `connect-guide` の下に現在の `userLevel` を置き、見かけ上のバランスを取りつつ必要なら変更できる構成を想定します。
+未達管理先は次の項目です。
+- `docs/UNMET_REQUIREMENTS.md` の「開始画面に `userLevel` の4段階必須選択UIを追加する」
+- `docs/UNMET_REQUIREMENTS.md` の「`userLevel` を保存JSONに保持し、再読込時に復元し、未設定データ読込時は `はじめて` を採用する」
+- `docs/UNMET_REQUIREMENTS.md` の「`canvas-toolbar` の `toolbar-side` 内で `connect-guide` の下に現在の `userLevel` を表示し、開始後も変更できるようにする」
+- `docs/UNMET_REQUIREMENTS.md` の「AI向け出力に `userLevel` と説明粒度の案内文を反映する」
+- `docs/UNMET_REQUIREMENTS.md` の「AI相談JSONに `userLevel` と説明粒度の案内文を反映する」
+
 **細かい要望**
 - 現在はhtmlを開くと左のサイドパネルが閉じているが開いていて欲しい。
 - AIに出力するものに対して、ユーザーがどのAIに張ればいいか迷わないように「あなたの使用しているAI」というのを把握できる構造にしてほしい

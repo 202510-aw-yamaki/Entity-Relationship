@@ -12,6 +12,12 @@
 ## 未達の項目
 
 - `userLevel` を追加し、開始画面で4段階選択でき、保存JSONに保持し、AI向け出力 / AI相談JSONに反映できるようにする
+- 上記 `userLevel` 対応は、以下の粒度で分けて管理する
+- 開始画面に `userLevel` の4段階必須選択UIを追加する
+- `userLevel` を保存JSONに保持し、再読込時に復元し、未設定データ読込時は `はじめて` を採用する
+- `canvas-toolbar` の `toolbar-side` 内で `connect-guide` の下に現在の `userLevel` を表示し、開始後も変更できるようにする
+- AI向け出力に `userLevel` と説明粒度の案内文を反映する
+- AI相談JSONに `userLevel` と説明粒度の案内文を反映する
 
 ---
 
@@ -37,3 +43,7 @@
 ## 2026-04-17 追記: 新規未達追加
 
 - `REQUIREMENTS.md` の `userLevel` 要望のうち、開始画面選択 / 保存JSON保持 / AI向け出力・AI相談JSON反映を承認済み仕様としてこの文書に追加した。
+
+## 2026-04-17 追記: 粒度調整
+
+- `userLevel` 対応について、開始画面必須選択 / 保存読込 / `connect-guide` 下の表示 / AI向け出力 / AI相談JSON の5項目に分けて追えるようにした。
